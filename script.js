@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (product) {
       cart.push({ ...product, cartId: Date.now() + Math.random() });
       renderCart();
+      showSuccessMessage(`${product.name} added to cart!`);
     }
   };
 
@@ -71,13 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
         cartItem.innerHTML = `
                   <div class="cart-item-info">
                       <div class="cart-item-name">${item.name}</div>
-                      <div class="cart-item-price">${item.price.toFixed(
-                        2
-                      )}</div>
+                      <div class="cart-item-price">${item.price.toFixed(2)}</div>
                   </div>
-                  <button class="cart-item-remove" onclick="removeFromCart(${
-                    item.cartId
-                  })">Remove</button>
+                  <button class="cart-item-remove" onclick="removeFromCart(${item.cartId})">Remove</button>
               `;
         cartItems.appendChild(cartItem);
       });
