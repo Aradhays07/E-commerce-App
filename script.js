@@ -48,8 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.removeFromCart = function (cartId) {
+    const item = cart.find((item) => item.cartId === cartId);
     cart = cart.filter((item) => item.cartId !== cartId);
     renderCart();
+    if (item) {
+      showSuccessMessage(`${item.name} removed from cart!`);
+    }
   };
 
   function renderCart() {
@@ -117,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cart.length > 0) {
         cart = [];
         renderCart();
+        showSuccessMessage("Cart cleared successfully!");
       }
     });
 
